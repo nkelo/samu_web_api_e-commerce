@@ -1,0 +1,101 @@
+﻿@model IEnumerable<SamuEcommerce_Web_App.Models.Products.ProductViewModel>
+
+@{
+    ViewBag.Title = "ListProducts";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@*Slide Show*@
+
+<div class="slideshow-container">
+    <div class="mySlides">
+        <div class="numbertext">1 / 4</div>
+        <img src="https://www.evergreenfeed.com/blog/wp-content/uploads/2018/01/online-promotion-twitter-chat.gif" style="width: 100%;">
+        <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">2 / 4</div>
+        <img src="https://www.w3schools.com/howto/img_fjords_wide.jpg" style="width: 100%;">
+        <div class="text">Caption Text</div>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">3 / 4</div>
+        <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" style="width: 100%;">
+        <div class="text">Caption Text</div>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">4 / 4</div>
+        <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width: 100%;">
+        <div class="text">Caption Text</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<div style="text-align: center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+
+<div class="grider " >
+
+    @foreach (var item in Model)
+    {
+
+
+        <figure class="snip1423  ">
+
+            <img src="~/Content/Images/@item.Image" alt="@item.Name" />
+
+            <figcaption>
+                <h3>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </h3>
+                <div class="price">
+                    R @Html.DisplayFor(modelItem => item.UnitPrice)
+                </div>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CreatedDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>*@
+                <div>
+                    Quantity:  @Html.DisplayFor(modelItem => item.Quantity)
+
+                </div>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>*@
+            </figcaption><a href="#" data-id="@Html.DisplayFor(modelItem => item.Id)" data-name="@Html.DisplayFor(modelItem => item.Name)" data-price="@Html.DisplayFor(modelItem => item.UnitPrice)" class="add-to-cart ripple-effect "><i class="ion-android-cart"></i></a>
+        </figure>
+
+
+
+
+    }
+
+
+</div>
+
+
+

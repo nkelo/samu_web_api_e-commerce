@@ -1,0 +1,10 @@
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\bin\Debug\DataContext.dll.config
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\bin\Debug\DataContext.dll
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\bin\Debug\DataContext.pdb
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\bin\Debug\EntityFramework.dll
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\bin\Debug\EntityFramework.xml
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\obj\Debug\DataContext.csproj.CoreCompileInputs.cache
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\obj\Debug\DataContext.csproj.CopyComplete
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\obj\Debug\DataContext.dll
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\obj\Debug\DataContext.pdb
+C:\Users\samu\source\repos\SamuEcommerce-Web-App\DataContext\obj\Debug\DataContext.csprojAssemblyReference.cache

@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NewEcommerceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="Status" Type="smallint" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitPrice" Type="float" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAddresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NewEcommerceDBModelStoreContainer">
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductInventory" EntityType="Self.ProductInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAddresses" EntityType="Self.UserAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NewEcommerceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int16" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="OrderDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitPrice" Type="Double" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NewEcommerceDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="ProductInventories" EntityType="Self.ProductInventory" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="UserAddresses" EntityType="Self.UserAddress" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NewEcommerceDBModelStoreContainer" CdmEntityContainer="NewEcommerceDBEntities">
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="NewEcommerceDBModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="NewEcommerceDBModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="NewEcommerceDBModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="OrderDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductInventories">
+            <EntityTypeMapping TypeName="NewEcommerceDBModel.ProductInventory">
+              <MappingFragment StoreEntitySet="ProductInventory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="NewEcommerceDBModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAddresses">
+            <EntityTypeMapping TypeName="NewEcommerceDBModel.UserAddress">
+              <MappingFragment StoreEntitySet="UserAddresses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NewEcommerceDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title - Samu Shopping</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Samu Shopping", "ListProducts", "Product", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @* <span class="cart-btn"><i type="button" class="ion-android-cart top-icon" data-toggle="modal" data-target="#cart"> <span class="total-count"></span></i></span>*@
+                        @* <span class="cart-btn"><button class="clear-cart btn btn-danger">Clear Cart</button></span>*@
+                    </li>
+
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade myCart" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <table class=" table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th></th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody class="show-cart"></tbody>
+                    </table>
+                    <div>Total price: <span class="total-cart"></span></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    @using Microsoft.AspNet.Identity
+                    @if (Request.IsAuthenticated)
+                    { <button type="button" id="orderNow" class="btn btn-primary" onclick="placeOrder();">Order now</button>}
+                    else {
+                      <button type="button" class="btn btn-primary" disabled>Login to order</button>
+                    }
+                    </div>
+
+            </div>
+            <div class="text-center"><span class="cart-btn"><button class="clear-cart btn btn-danger">Clear Cart</button></span></div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="msg" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel" aria-hidden="true">
+
+
+
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="msgModalLabel">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="show-msg"></div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    @*<button type="button" id="orderNow" class="btn btn-primary" onclick="placeOrder();">Order now</button>*@
+                </div>
+
+            </div>
+           
+        </div>
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr style="margin-top: 50px;" />
+        <!-- Site footer -->
+
+    </div>
+
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Food</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Computer</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Music</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Games</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Books</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Fashion</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="https://simukelontshaba.playdev.co.za/">About Us</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Contact Us</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Contribute</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Privacy Policy</a></li>
+                        <li><a href="https://simukelontshaba.playdev.co.za/">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">
+                        Copyright &copy; 2022 All Rights Reserved by
+                        <a href="https://simukelontshaba.playdev.co.za/">Samu Shopping</a>.
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="https://simukelontshaba.playdev.co.za/"><i class="ionicons ion-social-facebook"></i></a></li>
+                        <li><a class="twitter" href="https://simukelontshaba.playdev.co.za/"><i class="ionicons ion-social-twitter"></i></a></li>
+                        <li><a class="dribbble" href="https://simukelontshaba.playdev.co.za/"><i class="ionicons ion-social-dribbble"></i></a></li>
+                        <li><a class="linkedin" href="https://simukelontshaba.playdev.co.za/"><i class="ionicons ion-social-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @*Cart*@
+
+    <div class="wrapper " data-target="#cart">
+        <button class="btn2 shop d-flex align-items-center justify-content-center" data-target="#cart">
+            <i type="button" class="ion-android-cart top-icon" data-toggle="modal" data-target="#cart"> </i><span class="total-count"></span>
+        </button>
+        
+
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
